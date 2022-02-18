@@ -5,7 +5,6 @@
 typedef long long int ll;
 #include <bits/stdc++.h>
 using namespace std;
-#define M 1000000007;
 bool bs(vector<int> v, int n)
 {
     int low = 0, high = v.size() - 1;
@@ -21,45 +20,46 @@ bool bs(vector<int> v, int n)
     }
     return false;
 }
-int numberOfWays(string c)
+const int N = 1e5;
+vector<int> g[N];
+bool vis[N];
+int level[N] void bfs(int source)
 {
-    int seat=0;
-    for(int i=0;i<c.length();i++)
+    queue<int> q;
+    q.push(source);
+    vis[source] = true;
+    while (!q.empty())
     {
-        if(c[i]=='S')
-        seat++;
-    }
-    if(seat<2)
-    return 0;
-    if(seat==2&&c.length()==2)
-    return 1;
-    seat=0;
-    int index,last;
-    for(int i=0;i<c.length();i++)
-    {
-        if(c[i]=='S')
-        seat++;
-        if(seat==2&&c[i]=='S')
-        index=i;
-        if(seat>2)
+        int curr_vertex = q.front();
+        q.pop();
+        cout << curr_vertex << for (auto child : g[curr_vertex])
         {
-            last=i;
-            break;
+            if (!vis[child])
+            {
+                q.push(child);
+                vis[child] = true;
+                level[child] = level[curr_vertex] + 1;
+            }
         }
-
     }
-    // cout<<last<<" "<<index<<endl;
-    if(seat==2)
-    return (c.length()-index-1);
-    return last-index;
-
+    cout << endl;
+}
+void dfs(int vertex)
+{
+    cout << vertex;
+    vis[vertex] = true;
+    for (auto child : g[vertex])
+    {
+        if (vis[child])
+            continue;
+        dfs(child);
+    }
 }
 int main()
 {
-    ll n;
-    cin>>n;
-    string s;
-    cin>>s;
-    cout<<numberOfWays(s);
-
+    int t;
+    cin >> t;
+    while (t--)
+    {
+    }
 }
